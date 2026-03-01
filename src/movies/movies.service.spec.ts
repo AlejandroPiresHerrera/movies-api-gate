@@ -47,33 +47,35 @@ describe('MoviesService', () => {
 
   it('getMovieById() retorna una película por id', async () => {
     const movie = { id: 1, title: 'Coco' } as Movie;
-    jest.spyOn(repo, 'findOne').mockResolvedValue(movie);
+    const findOneSpy = jest.spyOn(repo, 'findOne').mockResolvedValue(movie);
 
     const result = await service.getMovieById(1);
     expect(result).toEqual(movie);
-    expect(repo.findOne).toHaveBeenCalledWith({ where: { id: 1 } });
+    expect(findOneSpy).toHaveBeenCalledWith({ where: { id: 1 } });
   });
 
   it('createMovie() crea y guarda una nueva película', async () => {
     const title = 'New Movie';
     const movie = { id: 1, title } as Movie;
 
-    jest.spyOn(repo, 'create').mockReturnValue(movie);
-    jest.spyOn(repo, 'save').mockResolvedValue(movie);
+    const createSpy = jest.spyOn(repo, 'create').mockReturnValue(movie);
+    const saveSpy = jest.spyOn(repo, 'save').mockResolvedValue(movie);
 
     const result = await service.createMovie(title);
 
-    expect(repo.create).toHaveBeenCalledWith({ title });
-    expect(repo.save).toHaveBeenCalledWith(movie);
+    expect(createSpy).toHaveBeenCalledWith({ title });
+    expect(saveSpy).toHaveBeenCalledWith(movie);
     expect(result).toEqual(movie);
   });
 
   it('deleteMovie() elimina una película por id', async () => {
-    jest.spyOn(repo, 'delete').mockResolvedValue(undefined as any);
+    const deleteSpy = jest
+      .spyOn(repo, 'delete')
+      .mockResolvedValue({ affected: 1, raw: {} });
 
     await service.deleteMovie(1);
 
-    expect(repo.delete).toHaveBeenCalledWith(1);
+    expect(deleteSpy).toHaveBeenCalledWith(1);
   });
 
   it('classifyValue() clasifica correctamente los valores', () => {
