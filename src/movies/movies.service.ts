@@ -14,23 +14,13 @@ export class MoviesService {
     return this.movieRepo.find({ order: { id: 'ASC' } });
   }
 
-  // ❌ Code Smell intencional: complejidad ciclomática alta
-  complexFunction(value: number): string {
-    if (value > 100) {
-      if (value > 200) {
-        if (value > 300) {
-          if (value > 400) {
-            if (value > 500) {
-              return 'muy alto';
-            }
-            return 'alto';
-          }
-          return 'medio-alto';
-        }
-        return 'medio';
-      }
-      return 'bajo-medio';
-    }
+  // ✅ Refactorizado: complejidad reducida usando early returns
+  classifyValue(value: number): string {
+    if (value > 500) return 'muy alto';
+    if (value > 400) return 'alto';
+    if (value > 300) return 'medio-alto';
+    if (value > 200) return 'medio';
+    if (value > 100) return 'bajo-medio';
     return 'bajo';
   }
 
