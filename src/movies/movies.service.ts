@@ -11,7 +11,6 @@ export class MoviesService {
   ) {}
 
   async listMovies(): Promise<Movie[]> {
-    const unusedVariable = 'esto va a fallar el lint'; // ❌ Fallo lint intencional
     return this.movieRepo.find({ order: { id: 'ASC' } });
   }
 
