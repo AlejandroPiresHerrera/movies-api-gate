@@ -25,6 +25,15 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## 🎯 Quality Gate
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=AlejandroPiresHerrera_movies-api-gate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=AlejandroPiresHerrera_movies-api-gate)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=AlejandroPiresHerrera_movies-api-gate&metric=coverage)](https://sonarcloud.io/summary/new_code?id=AlejandroPiresHerrera_movies-api-gate)
+[![CI](https://github.com/AlejandroPiresHerrera/movies-api-gate/actions/workflows/quality.yml/badge.svg)](https://github.com/AlejandroPiresHerrera/movies-api-gate/actions/workflows/quality.yml)
+
+Este proyecto implementa un Quality Gate completo con GitHub Actions, ESLint, Jest y SonarCloud.  
+📖 **[Ver documentación completa del Quality Gate](QUALITY_GATE.md)**
+
 ## Project setup
 
 ```bash
