@@ -34,4 +34,18 @@ export class MoviesService {
     }
     return 'bajo';
   }
+
+  // ❌ Bajada de coverage: método sin tests
+  async getMovieById(id: number): Promise<Movie | null> {
+    return this.movieRepo.findOne({ where: { id } });
+  }
+
+  async createMovie(title: string): Promise<Movie> {
+    const movie = this.movieRepo.create({ title });
+    return this.movieRepo.save(movie);
+  }
+
+  async deleteMovie(id: number): Promise<void> {
+    await this.movieRepo.delete(id);
+  }
 }
