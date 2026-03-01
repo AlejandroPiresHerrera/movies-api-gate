@@ -38,6 +38,7 @@ describe('MoviesService', () => {
     jest.spyOn(repo, 'find').mockResolvedValue(data);
 
     const result = await service.listMovies();
-    expect(result).toEqual(data);
+    // ❌ Fallo de test intencional: expectativa incorrecta
+    expect(result).toEqual([{ id: 999, title: 'Wrong Movie' }]);
   });
 });
